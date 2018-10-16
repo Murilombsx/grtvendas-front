@@ -51,6 +51,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "proxyConfig": "./proxy.config.js",
           "options": {
             "browserTarget": "grtvendas:build"
           },
