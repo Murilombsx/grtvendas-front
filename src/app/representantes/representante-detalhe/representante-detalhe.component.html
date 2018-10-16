@@ -1,0 +1,142 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold">Detalhes</h4>
+
+<div class="panel-group">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="btn-group">
+                <button (click)="redirecionaListaRepresentantes()" class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+                    <i class="fa fa-arrow-left " aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="btn-group pull-right">
+                <div class="pull-right">  
+                    <button (click)="redirecionaEditarRepresentante()" class="btn btn-warning btn-lg mb-4 p-2 mr-2 mt-2 ">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button (click)="deletaRepresetante()" class="btn btn-danger btn-lg mb-4 p-2 mr-2 mt-2 ">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-sm">
+        <tbody>
+            <tr>
+              <th>Nome</th>
+                <td>{{ representante?.nome }}</td>
+            </tr>
+            <tr>
+              <th>CPF</th>
+                <td>{{ representante?.cpf }}</td>
+            </tr>
+            <tr>
+              <th>RG</th>
+                <td>{{ representante?.rg }}</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+                <td>{{ representante?.email }}</td>
+            </tr>
+            <tr>
+              <th>Data de Entrada</th>
+                <td>{{ representante?.dataEntrada }}</td>
+            </tr>
+            <tr>
+              <th>Razão Social</th>
+                <td>{{ representante?.razaoSocial }}</td>
+            </tr>
+            <tr>
+              <th>CNPJ</th>
+                <td>{{ representante?.cnpj }}</td>
+            </tr>
+            <tr>
+              <th>Telefone</th>
+                <td>{{ representante?.telefone }}</td>
+            </tr>
+            <tr>
+              <th>Rua</th>
+                <td>{{ representante?.endereco.rua }}</td>
+            </tr>
+            <tr>
+              <th>Número</th>
+                <td>{{ representante?.endereco.numero }}</td>
+            </tr>
+            <tr>
+              <th>Complemento</th>
+                <td>{{ representante?.endereco.complemento }}</td>
+            </tr>
+            <tr>
+              <th>Bairro</th>
+                <td>{{ representante?.endereco.bairro }}</td>
+            </tr>
+            <tr>
+              <th>Cidade</th>
+                <td>{{ representante?.endereco.cidade }}</td>
+            </tr>
+            <tr>
+              <th>Estado</th>
+                <td>{{ representante?.endereco.estado }}</td>
+            </tr>
+            <tr>
+              <th>CEP</th>
+                <td>{{ representante?.endereco.cep }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 class="text-center mb-3 mt-5 font-weight-bold">
+        Clientes
+    </h4>
+    
+    <div *ngIf="representante?.clientes.length != 0; else case1">
+        <table class="table table-sm"> 
+                <thead class="thead-light"> 
+                <tr> 
+                    <th scope="col">Nome Fantasia</th>
+                    <th scope="col">CNPJ</th>
+                    <th scope="col">Cidade</th>
+                </tr> 
+                </thead> 
+                <tbody> 
+                <tr *ngFor="let cliente of representante?.clientes" grtDarkenOnHover>
+                    <td>{{cliente.nomeFantasia}}</td>
+                    <td>{{cliente.cnpj}}</td>
+                    <td>{{cliente.endereco.cidade}}</td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+
+    <ng-template #case1>
+        <p class="text-center mb-5">
+            <a>Não há clientes cadastrados para {{ representante?.nome! }}!</a>
+        </p>
+    </ng-template>
+
+    <h4 class="text-center mb-3 mt-5 font-weight-bold">
+        Pedidos
+    </h4>
+
+    <div *ngIf="representante?.pedidos.length != 0 ; else case2">
+        <table class="table table-sm"> 
+                <thead class="thead-light"> 
+                <tr> 
+                    <th scope="col" class="text-center">Número</th>
+                </tr> 
+                </thead> 
+                <tbody> 
+                <tr *ngFor="let pedido of representante?.pedidos" class="text-center" grtDarkenOnHover>
+                    <td>{{pedido.numero}}</td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+
+    <ng-template #case2>
+        <p class="text-center mb-5">
+            <a>Não há pedidos cadastrados para {{ representante?.nome! }}!</a>
+        </p>
+    </ng-template>

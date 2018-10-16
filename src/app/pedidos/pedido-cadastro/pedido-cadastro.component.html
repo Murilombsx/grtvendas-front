@@ -1,0 +1,66 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold"> Cadastro de Pedido</h4>
+
+<div (click)="redirecionaListaPedidos()">
+    <button class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+        <i class="fa fa-arrow-left " aria-hidden="true"></i>
+    </button>
+</div>
+
+<form [formGroup]="cadastroPedidoForm" class="form mt-4" (submit)="cadastrarPedido()">
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Quantidade de Peças</label>
+        <div class="col-5">
+            <input class="form-control" formControlName="qtdePecas" type="text" placeholder="Ex.: 200" autofocus>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('qtdePecas').errors?.required" text="Quantidade de Peças é necessário!">
+            </grt-vmessage>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('qtdePecas').errors?.minlength" text="Quantidade de Peças muito curto!">
+            </grt-vmessage>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('qtdePecas').errors?.maxlength" text="Quantidade de Peças estourou o tamanho máximo!">
+            </grt-vmessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Valor Total</label>
+        <div class="col-5">
+            <input class="form-control" formControlName="valorTotal" type="text" placeholder="Ex.: 3000">
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('valorTotal').errors?.required" text="Valor Total é necessário!">
+            </grt-vmessage>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('valorTotal').errors?.minlength" text="Valor Total muito curto!">
+            </grt-vmessage>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('valorTotal').errors?.maxlength" text="Valor Total estourou o tamanho máximo!">
+            </grt-vmessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Observação</label>
+        <div class="col-5">
+            <input class="form-control" formControlName="observacao" type="text" placeholder="Ex.: Pedido para entrega imediata">
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('observacao').errors?.required" text="Observação é necessário!">
+            </grt-vmessage>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('observacao').errors?.minlength" text="Observação muito curto!">
+            </grt-vmessage>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('observacao').errors?.maxlength" text="Observação estourou o tamanho máximo!">
+            </grt-vmessage>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Cliente</label>
+        <div class="col-2">
+            <select class="form-control" formControlName="cliente">
+                <option selected></option>
+                <ng-container *ngFor="let cliente of clientes">
+                    <option>{{ cliente?.nomeFantasia }}</option>
+                </ng-container>
+            </select>
+            <grt-vmessage *ngIf="cadastroPedidoForm.get('cliente').errors?.required" text="Cliente é necessário!">
+            </grt-vmessage>
+        </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+        <div class="col-2">
+            <button [disabled]="cadastroPedidoForm.invalid" class="btn btn-primary btn-block">Cadastrar</button>
+        </div>
+    </div>
+
+</form>

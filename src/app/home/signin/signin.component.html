@@ -1,0 +1,53 @@
+<h4 class="text-center mt-2">Login</h4>
+
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
+
+    <div class="form-group row justify-content-center">
+        <div class="col-4">
+            <input #emailInput
+                formControlName="email"
+                type="email"
+                class="form-control text-center" 
+                placeholder="example@example.com" 
+                autofocus> 
+            <grt-vmessage class="text-center"
+                *ngIf="loginForm.get('email').errors?.required"
+                text="Email é necessário!">
+            </grt-vmessage>
+            <grt-vmessage class="text-center"
+                *ngIf="loginForm.get('email').errors?.email"
+                text="Não está no formato de email!">
+            </grt-vmessage>
+        </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+        <div class="col-4 text-center">
+            <input
+                formControlName="senha"
+                type="password" 
+                class="form-control text-center" 
+                placeholder="Senha">
+            <grt-vmessage class="text-center"
+                *ngIf="loginForm.get('senha').errors?.required"
+                text="Senha é necessária!">
+            </grt-vmessage>
+            <grt-vmessage class="text-center"
+            *ngIf="loginForm.get('senha').errors?.minlength"
+                text="Senha muito curta!">
+            </grt-vmessage>                
+        </div>
+    </div>
+
+    <div class="form-group row justify-content-center">
+        <div class="col-2">
+            <button 
+                [disabled]="loginForm.invalid"
+                type="submit" 
+                class="btn btn-primary btn-block center-block">
+                Login
+            </button>
+        </div>    
+    </div>
+
+</form>

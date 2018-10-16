@@ -1,0 +1,129 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold">Detalhes</h4>
+
+<div class="panel-group">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="btn-group">
+                <button (click)="redirecionaListaClientes()" class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+                    <i class="fa fa-arrow-left " aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="btn-group pull-right">
+                <div class="pull-right">
+                    <button (click)="redirecionaEditarCliente()" class="btn btn-warning btn-lg mb-4 p-2 mr-2 mt-2 ">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button (click)="deletaCliente()" class="btn btn-danger btn-lg mb-4 p-2 mr-2 mt-2 ">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-sm">
+    <tbody>
+        <tr>
+            <th>Nome Fantasia</th>
+            <td>{{ cliente?.nomeFantasia }}</td>
+        </tr>
+        <tr>
+            <th>Razão Social</th>
+            <td>{{ cliente?.razaoSocial }}</td>
+        </tr>
+        <tr>
+            <th>CNPJ</th>
+            <td>{{ cliente?.cnpj }}</td>
+        </tr>
+        <tr>
+            <th>Inscrição Estadual</th>
+            <td>{{ cliente?.inscricaoEstadual }}</td>
+        </tr>
+        <tr>
+            <th>Pessoa de Contato</th>
+            <td>{{ cliente?.pessoaContato }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ cliente?.email }}</td>
+        </tr>
+        <tr>
+            <th>Telefone</th>
+            <td>{{ cliente?.telefone }}</td>
+        </tr>
+        <tr>
+            <th>Rua</th>
+            <td>{{ cliente?.endereco.rua }}</td>
+        </tr>
+        <tr>
+            <th>Número</th>
+            <td>{{ cliente?.endereco.numero }}</td>
+        </tr>
+        <tr>
+            <th>Complemento</th>
+            <td>{{ cliente?.endereco.complemento }}</td>
+        </tr>
+        <tr>
+            <th>Bairro</th>
+            <td>{{ cliente?.endereco.bairro }}</td>
+        </tr>
+        <tr>
+            <th>Cidade</th>
+            <td>{{ cliente?.endereco.cidade }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ cliente?.endereco.estado }}</td>
+        </tr>
+        <tr>
+            <th>CEP</th>
+            <td>{{ cliente?.endereco.cep }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 class="text-center mb-3 mt-5 font-weight-bold">
+    Representante
+</h4>
+
+<table class="table table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr grtDarkenOnHover>
+            <td>{{cliente?.representante.nome}}</td>
+            <td>{{cliente?.representante.endereco.estado}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h4 class="text-center mb-3 mt-5 font-weight-bold">
+    Pedidos
+</h4>
+
+<div *ngIf="cliente?.pedidos.length != 0 ; else case2">
+    <table class="table table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="text-center">Número</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of cliente?.pedidos" class="text-center" grtDarkenOnHover>
+                <td>{{pedido.numero}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #case2>
+    <p class="text-center mb-5">
+        <a>Não há pedidos cadastrados para {{ cliente?.nomeFantasia! }}!</a>
+    </p>
+</ng-template>

@@ -1,0 +1,76 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold"> Edição de Pedido</h4>
+
+<div (click)="voltaPaginaAnterior()">
+    <button class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+        <i class="fa fa-arrow-left " aria-hidden="true"></i>
+    </button>
+</div>
+
+<form [formGroup]="editarPedidoForm" class="form mt-4" (submit)="editarPedido()" >
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Número</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="numero" type="text" placeholder="{{ pedido?.numero }}" readonly >
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Quantidade de Peças</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="qtdePecas" type="text" value="{{ pedido?.qtdePecas }}" placeholder="Ex.: 200" >
+                    <grt-vmessage
+                        *ngIf="editarPedidoForm.get('qtdePecas').errors?.minlength"
+                        text="Quantidade de Peças muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarPedidoForm.get('qtdePecas').errors?.maxlength"
+                        text="Quantidade de Peças estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Valor Total</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="valorTotal" type="text" value="{{ pedido?.valorTotal }}" placeholder="Ex.: 3000" >
+                    <grt-vmessage
+                        *ngIf="editarPedidoForm.get('valorTotal').errors?.minlength"
+                        text="Valor Total muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarPedidoForm.get('valorTotal').errors?.maxlength"
+                        text="Valor Total estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Observação</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="observacao" type="text" value="{{ pedido?.observacao }}" placeholder="Ex.: Pedido para entrega imediata" >
+                    <grt-vmessage
+                        *ngIf="editarPedidoForm.get('observacao').errors?.minlength"
+                        text="Observação muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarPedidoForm.get('observacao').errors?.maxlength"
+                        text="Observação estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Cliente</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="cliente" type="text" placeholder="{{ pedido?.cliente.nomeFantasia }}" readonly >
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Representante</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="representante" type="text" placeholder="{{ pedido?.representante.nome }}" readonly >
+                </div>
+        </div>
+       
+        <div class="form-group row justify-content-center">
+            <div class="col-2">
+                <button class="btn btn-primary btn-block">Atualizar</button>
+            </div>
+        </div>
+</form>

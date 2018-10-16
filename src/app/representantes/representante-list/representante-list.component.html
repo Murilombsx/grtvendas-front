@@ -1,0 +1,71 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold">
+    Representantes
+</h4>
+
+<div class="panel-group text-center">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="btn-group">
+                <grt-search
+                    (onTyping)="filter = $event">
+                </grt-search>
+                <div class="row mt-2">
+                    <form [formGroup]="tipoForm" class="form" (click)="alteraTipo()">
+                        <div class="form-group row">
+                            <label class="col-1 col-form-label ml-3"></label>
+                                <div>
+                                    <select class="form-control" formControlName="tipo">
+                                        <option selected>Nome</option>
+                                        <option>Estado</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<div (click)="redirecionaCadastroRepresentante()">
+    <button style="float: right" class="btn btn-primary btn-lg mb-4 p-2 mr-2 mt-2 ">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+</div>
+
+<div *ngIf="representantes; else nada">
+        <table class="table table-sm"> 
+            <thead class="thead-light"> 
+            <tr> 
+                <th scope="col">Nome
+                    <i class="fa fa-sort ml-2" aria-hidden="true" (click)="orderNome()"></i>
+                </th>
+                <th scope="col">Estado
+                    <i class="fa fa-sort ml-2" aria-hidden="true" (click)="orderEstado()"></i>
+                </th>
+            </tr> 
+            </thead> 
+            <tbody> 
+            <tr *ngFor="let representante of representantes | filterRepresentante: [filter, type] | filterOrderNome: optNome | filterOrderEstado: optEstado" 
+                (click)="redirecionaDetalheRepresentante(representante.id)" grtDarkenOnHover>
+                <td>{{representante.nome}}</td>
+                <td>{{representante.endereco.estado}}</td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+
+<ng-template #nada>
+    Não há representantes!
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+    

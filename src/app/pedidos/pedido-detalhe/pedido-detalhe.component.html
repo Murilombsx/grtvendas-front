@@ -1,0 +1,106 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold">Detalhes</h4>
+
+<div class="panel-group">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="btn-group">
+                <button (click)="redirecionaListaPedidos()" class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+                    <i class="fa fa-arrow-left " aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="btn-group pull-right">
+                <div class="pull-right">
+                    <button (click)="redirecionaEditarPedido()" class="btn btn-warning btn-lg mb-4 p-2 mr-2 mt-2 ">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                    <button (click)="deletaPedido()" class="btn btn-danger btn-lg mb-4 p-2 mr-2 mt-2 ">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-sm">
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>{{ pedido?.numero }}</td>
+        </tr>
+        <tr>
+            <th>Quantidade de Peças</th>
+            <td>{{ pedido?.qtdePecas }}</td>
+        </tr>
+        <tr>
+            <th>Valor Total</th>
+            <td>{{ pedido?.valorTotal }}</td>
+        </tr>
+        <tr>
+            <th>Observação</th>
+            <td>{{ pedido?.observacao }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 class="text-center mb-3 mt-5 font-weight-bold">
+    Cliente
+</h4>
+
+<table class="table table-sm">
+    <tbody>
+        <tr>
+            <th>Nome Fantasia</th>
+            <td>{{ pedido?.cliente.nomeFantasia }}</td>
+        </tr>
+        <tr>
+            <th>CNPJ</th>
+            <td>{{ pedido?.cliente.cnpj }}</td>
+        </tr>
+        <tr>
+            <th>Rua</th>
+            <td>{{ pedido?.cliente.endereco.rua }}</td>
+        </tr>
+        <tr>
+            <th>Número</th>
+            <td>{{ pedido?.cliente.endereco.numero }}</td>
+        </tr>
+        <tr>
+            <th>Complemento</th>
+            <td>{{ pedido?.cliente.endereco.complemento }}</td>
+        </tr>
+        <tr>
+            <th>Bairro</th>
+            <td>{{ pedido?.cliente.endereco.bairro }}</td>
+        </tr>
+        <tr>
+            <th>Cidade</th>
+            <td>{{ pedido?.cliente.endereco.cidade }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ pedido?.cliente.endereco.estado }}</td>
+        </tr>
+        <tr>
+            <th>CEP</th>
+            <td>{{ pedido?.cliente.endereco.cep }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 class="text-center mb-3 mt-5 font-weight-bold">
+    Representante
+</h4>
+
+<table class="table table-sm">
+    <tbody>
+        <tr>
+            <th>Nome</th>
+            <td>{{ pedido?.representante.nome }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ pedido?.representante.endereco.estado }}</td>
+        </tr>
+    </tbody>
+</table>

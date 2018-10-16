@@ -1,0 +1,224 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold"> Edição de Cliente</h4>
+
+<div (click)="voltaPaginaAnterior()">
+    <button class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+        <i class="fa fa-arrow-left " aria-hidden="true"></i>
+    </button>
+</div>
+
+<form [formGroup]="editarClienteForm" class="form mt-4" (submit)="editarCliente()" >
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Nome Fantasia</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="nomeFantasia" type="text" value="{{ cliente?.nomeFantasia }}" placeholder="{{ cliente?.nomeFantasia }}" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('nomeFantasia').errors?.minlength"
+                        text="Contato muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('nomeFantasia').errors?.maxlength"
+                        text="Contato estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Razão Social</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="razaoSocial" type="text" placeholder="{{ cliente?.razaoSocial }}" readonly >
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">CNPJ</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="cnpj" type="text" placeholder="{{ cliente?.cnpj }}" readonly >
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Inscrição Estadual</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="inscricaoEstadual" type="text" placeholder="{{ cliente?.inscricaoEstadual }}" readonly >
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Pessoa de Contato</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="pessoaContato" type="text" value="{{ cliente?.pessoaContato }}" placeholder="Ex.: Alan" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('pessoaContato').errors?.minlength"
+                        text="Contato muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('pessoaContato').errors?.maxlength"
+                        text="Contato estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Email</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="email" type="email" value="{{ cliente?.email }}" placeholder="example@example.com" autofocus>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('email').errors?.email"
+                        text="Não está no formato de email!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Telefone</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="telefone" type="text" value="{{ cliente?.telefone }}" placeholder="Ex.: (99)9999-9999" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('telefone').errors?.minlength"
+                        text="Telefone muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('telefone').errors?.maxlength"
+                        text="Telefone estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Rua</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="rua" type="text" value="{{ cliente?.endereco.rua }}" placeholder="Ex.: Rua Jota" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('rua').errors?.minlength"
+                        text="Rua muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('rua').errors?.maxlength"
+                        text="Rua estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Número</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="numero" type="text" value="{{ cliente?.endereco.numero }}" placeholder="Ex.: 151" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('numero').errors?.minlength"
+                        text="Número muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('numero').errors?.maxlength"
+                        text="Número estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Complemento</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="complemento" type="text" value="{{ cliente?.endereco.complemento }}" placeholder="Ex.: Apartamento 101" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('complemento').errors?.maxlength"
+                        text="Complemento estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Bairro</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="bairro" type="text" value="{{ cliente?.endereco.bairro }}" placeholder="Ex.: Setor Universitário" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('bairro').errors?.minlength"
+                        text="Bairro muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('bairro').errors?.maxlength"
+                        text="Bairro estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Cidade</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="cidade" type="text" value="{{ cliente?.endereco.cidade }}" placeholder="Ex.: Goiânia" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('cidade').errors?.minlength"
+                        text="Cidade muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('cidade').errors?.maxlength"
+                        text="Cidade estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Estado</label>
+                <div class="col-1">
+                    <select class="form-control" formControlName="estado">
+                        <option selected>Atual - {{cliente?.endereco.estado}}</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AP</option>
+                        <option>AM</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MT</option>
+                        <option>MS</option>
+                        <option>MG</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PR</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RS</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>SC</option>
+                        <option>SP</option>
+                        <option>SE</option>
+                        <option>TO</option>
+                    </select>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('estado').errors?.required"
+                        text="Estado é necessário!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">CEP</label>
+                <div class="col-5">
+                    <input class="form-control" formControlName="cep" type="text" value="{{ cliente?.endereco.cep }}" placeholder="Ex.: 99999-999" >
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('cep').errors?.required"
+                        text="CEP é necessário!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('cep').errors?.minlength"
+                        text="CEP muito curto!">
+                    </grt-vmessage>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('cep').errors?.maxlength"
+                        text="CEP estourou o tamanho máximo!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-1 col-form-label ml-3">Representante</label>
+                <div class="col-2">
+                    <select class="form-control" formControlName="representante">
+                        <option selected>{{cliente?.representante.nome}} - Atual</option>
+                        <ng-container *ngFor="let representante of representantes">
+                            <option *ngIf="representante?.endereco.estado == cliente?.endereco.estado ">{{ representante?.nome }}</option>
+                        </ng-container>    
+                    </select>
+                    <grt-vmessage
+                        *ngIf="editarClienteForm.get('representante').errors?.required"
+                        text="Representante é necessário!">
+                    </grt-vmessage>
+                </div>
+        </div>
+        
+        <div class="form-group row justify-content-center">
+            <div class="col-2">
+                <button class="btn btn-primary btn-block">Atualizar</button>
+            </div>
+        </div>
+</form>

@@ -1,0 +1,38 @@
+<header class="fixed-top">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand">GRT VENDAS</a>
+            <div class="btn-group">
+                <div *ngIf="(user$ | async) as user; else vazio">
+                    <a class="mr-4" (click)="pedidos()">Pedidos</a>
+                </div>
+
+                <div *ngIf="(user$ | async) as user; else vazio">
+                    <a class="mr-4 ml-4" (click)="representantes()">Representantes</a>
+                </div>
+
+                <div *ngIf="(user$ | async) as user; else vazio">
+                    <a class="ml-4" (click)="clientes()">Clientes</a>
+                </div>
+            </div>
+            <div *ngIf="(user$ | async) as user; else login">
+                <i class="fa fa-user-circle mr-1"></i>
+                <a class="mr-1">{{ user.nome }}</a>
+                <a (click)="logout()">(Logout)</a>
+            </div>
+
+            <ng-template #login>
+                <span class="navbar-text">
+                    <a>Por favor, faça o login!</a>
+                </span>
+            </ng-template>
+
+            <ng-template #vazio>
+                <span class="navbar-text"></span>
+            </ng-template>
+
+        </nav>
+        <div>
+            <grt-alert></grt-alert>
+        </div>
+</header>
+

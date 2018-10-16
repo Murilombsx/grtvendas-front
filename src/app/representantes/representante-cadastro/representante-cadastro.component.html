@@ -1,0 +1,280 @@
+<h4 class="text-center mb-3 mt-3 font-weight-bold"> Cadastro de Representante</h4>
+
+<div (click)="redirecionaListaRepresentantes()">
+        <button class="btn btn-secondary btn-lg mb-4 p-2 ml-2 mt-2 ">
+                <i class="fa fa-arrow-left " aria-hidden="true"></i>
+        </button>
+</div>
+
+<form [formGroup]="cadastroRepresentanteForm" class="form mt-4" (submit)="cadastrarRepresentante()">
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Nome Completo</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="nome" type="text" placeholder="Ex.: João Marques da Silva" autofocus >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('nome').errors?.required"
+                    text="Nome é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('nome').errors?.minlength"
+                    text="Nome muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('nome').errors?.maxlength"
+                    text="Nome estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">CPF</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="cpf" type="text" placeholder="Ex.: 999.999.999-99" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cpf').errors?.required"
+                    text="CPF é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cpf').errors?.minlength"
+                    text="CPF muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cpf').errors?.maxlength"
+                    text="CPF estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">RG</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="rg" type="text" placeholder="Ex.: 1234567" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('rg').errors?.required"
+                    text="RG é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('rg').errors?.minlength"
+                    text="RG muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('rg').errors?.maxlength"
+                    text="RG estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Email</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="email" type="email" placeholder="example@example.com" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('email').errors?.required"
+                    text="Email é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('email').errors?.email"
+                    text="Não está no formato de email!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Razão Social</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="razaoSocial" type="text" placeholder="Ex.: JOÃO MARQUES DA SILVA LTDA - ME" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('razaoSocial').errors?.required"
+                    text="Razão Social é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('razaoSocial').errors?.minlength"
+                    text="Razão Social muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('razaoSocial').errors?.maxlength"
+                    text="Razão Social estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">CNPJ</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="cnpj" type="text" placeholder="Ex.: 99.999.999/9999-99" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cnpj').errors?.required"
+                    text="CNPJ é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cnpj').errors?.minlength"
+                    text="CNPJ muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cnpj').errors?.maxlength"
+                    text="CNPJ estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Telefone</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="telefone" type="text" placeholder="Ex.: (99)9999-9999" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('telefone').errors?.required"
+                    text="Telefone é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('telefone').errors?.minlength"
+                    text="Telefone muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('telefone').errors?.maxlength"
+                    text="Telefone estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Rua</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="rua" type="text" placeholder="Ex.: Rua Jota" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('rua').errors?.required"
+                    text="Rua é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('rua').errors?.minlength"
+                    text="Rua muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('rua').errors?.maxlength"
+                    text="Rua estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Número</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="numero" type="text" placeholder="Ex.: 151" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('numero').errors?.required"
+                    text="Número é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('numero').errors?.minlength"
+                    text="Número muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('numero').errors?.maxlength"
+                    text="Número estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Complemento</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="complemento" type="text" placeholder="Ex.: Apartamento 101" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('complemento').errors?.maxlength"
+                    text="Complemento estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Bairro</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="bairro" type="text" placeholder="Ex.: Setor Universitário" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('bairro').errors?.required"
+                    text="Bairro é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('bairro').errors?.minlength"
+                    text="Bairro muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('bairro').errors?.maxlength"
+                    text="Bairro estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Cidade</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="cidade" type="text" placeholder="Ex.: Goiânia" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cidade').errors?.required"
+                    text="Cidade é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cidade').errors?.minlength"
+                    text="Cidade muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cidade').errors?.maxlength"
+                    text="Cidade estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">Estado</label>
+            <div class="col-1">
+                <select class="form-control" formControlName="estado">
+                    <option selected></option>
+                    <option>AC</option>
+                    <option>AL</option>
+                    <option>AP</option>
+                    <option>AM</option>
+                    <option>BA</option>
+                    <option>CE</option>
+                    <option>DF</option>
+                    <option>ES</option>
+                    <option>GO</option>
+                    <option>MA</option>
+                    <option>MT</option>
+                    <option>MS</option>
+                    <option>MG</option>
+                    <option>PA</option>
+                    <option>PB</option>
+                    <option>PR</option>
+                    <option>PE</option>
+                    <option>PI</option>
+                    <option>RJ</option>
+                    <option>RN</option>
+                    <option>RS</option>
+                    <option>RO</option>
+                    <option>RR</option>
+                    <option>SC</option>
+                    <option>SP</option>
+                    <option>SE</option>
+                    <option>TO</option>
+                </select>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('estado').errors?.required"
+                    text="Estado é necessário!">
+                </grt-vmessage>
+            </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-1 col-form-label ml-3">CEP</label>
+            <div class="col-5">
+                <input class="form-control" formControlName="cep" type="text" placeholder="Ex.: 99999-999" >
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cep').errors?.required"
+                    text="CEP é necessário!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cep').errors?.minlength"
+                    text="CEP muito curto!">
+                </grt-vmessage>
+                <grt-vmessage
+                    *ngIf="cadastroRepresentanteForm.get('cep').errors?.maxlength"
+                    text="CEP estourou o tamanho máximo!">
+                </grt-vmessage>
+            </div>
+    </div>
+    
+    <div class="form-group row justify-content-center">
+        <div class="col-2">
+            <button [disabled]="cadastroRepresentanteForm.invalid" class="btn btn-primary btn-block">Cadastrar</button>
+        </div>
+    </div>
+
+</form>
+
+
