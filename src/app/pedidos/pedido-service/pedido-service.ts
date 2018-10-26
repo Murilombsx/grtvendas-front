@@ -5,7 +5,7 @@ import { Pedido } from '../pedido-classes/pedido';
 import { PedidoCadastro } from '../pedido-classes/pedido-cadastro';
 import { PedidoEditavel } from '../pedido-classes/pedido-editavel';
 
-const API_URL = "http://localhost:8080/grtvendas";
+const API_URL = "https://grtvendas-springboot.herokuapp.com";
 
 @Injectable({ providedIn: 'root' })
 export class PedidoService{

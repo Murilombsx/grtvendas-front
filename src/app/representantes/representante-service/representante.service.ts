@@ -5,7 +5,7 @@ import { RepresentanteResumo } from '../representante-classes/representante-resu
 import { RepresentanteEditavel } from '../representante-classes/representante-editavel';
 import { RepresentanteResumoId } from '../representante-classes/representante-resumo-id';
 
-const API_URL = "http://localhost:8080/grtvendas";
+const API_URL = "https://grtvendas-springboot.herokuapp.com";
 
 @Injectable({ providedIn: 'root' })
 export class RepresentanteService{
