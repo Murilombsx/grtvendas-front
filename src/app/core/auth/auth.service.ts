@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { UserService } from '../user/user.service';
 
-const API_URL = 'http://localhost:8080/grtvendas';
+const API_URL = 'https://grtvendas-springboot.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
